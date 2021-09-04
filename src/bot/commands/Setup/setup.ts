@@ -47,6 +47,8 @@ abstract class SetupCommand extends Command {
       return message.channel.send(botpermserror);
     }
 
+
+    // Process embed with Reaction Collector
     const processembed = new MessageEmbed()
       .setAuthor(message.author.tag, message.author.displayAvatarURL())
       .setColor("BLURPLE")
@@ -122,6 +124,7 @@ abstract class SetupCommand extends Command {
 
       if (reaction.emoji.name === "✅") {
         msg.delete();
+
 
         /*
         @param Checking if any Channel already inclused or has the Name "Developer"
