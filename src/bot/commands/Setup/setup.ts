@@ -5,12 +5,13 @@ abstract class SetupCommand extends Command {
   constructor() {
     super({
       name: "setup",
+      cooldown: 60,
       aliases: ["s"],
       description: "Setup Environment",
     });
   }
 
-  async exec(message: Message /*args: string[]*/) {
+  async exec(message: Message, /*args: string[]*/) {
     let errormember = new MessageEmbed()
       .setTitle(":x: | Error")
       .setDescription(
