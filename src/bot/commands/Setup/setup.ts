@@ -71,6 +71,7 @@ abstract class SetupCommand extends Command {
     */
 
     // Cancel Setup Process if there is already an existing channel called "Developer"
+    // @ts-ignore
     let enverror = new MessageEmbed()
       .setTitle(":x: | Error")
       .setDescription(
@@ -108,6 +109,7 @@ abstract class SetupCommand extends Command {
     await msg.react("❌");
 
     const collector = msg.createReactionCollector(
+        // @ts-ignore
       (reaction, user) => user.id === message.author.id
     );
     collector.on("collect", async (reaction) => {
@@ -133,9 +135,11 @@ abstract class SetupCommand extends Command {
         // End of security check
 
         // If everything is fine, the setup finishes and send this Message into the Channel the Setup got activated
+        // @ts-ignore
         const successmessage = await message.channel.send(done);
         //setTimeout(() => msg.delete(), 10000);
 
+        // @ts-ignore
         const createrole = await message.guild?.roles.create({
           data: {
             name: "Developers",
@@ -159,6 +163,7 @@ abstract class SetupCommand extends Command {
             },
           ],
         });
+        // @ts-ignore
         const channel = await message.guild?.channels
           .create("developer", {
             type: "text",
