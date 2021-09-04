@@ -3,12 +3,12 @@ title Barbie - DevOp
 color 4
 cls
 Echo Barbie DevOps - API
-Echo ============================================================================
+Echo ============================Koni Terminal============================
 Echo 1 Install Modules           Installs Required modules to load app!  (AFTER INSTALL RELAUNCH APP)          
 Echo 2 Download NODEJS           Downloads NODEJS (Windows/Default Browser)
 Echo 3 Start Node App            Launches Gen on [PORT Specified] - DC API
 Echo 4 Exit Launcher/Close       Closes this menu
-Echo ============================================================================
+Echo =====================================================================
 Choice /C 1234 /M "Select a choice below "
 
 If Errorlevel 4 Goto 4
@@ -21,6 +21,7 @@ Goto End
 
 :4
 :End
+
 
 :3
 npm run start
