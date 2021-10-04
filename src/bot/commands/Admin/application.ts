@@ -57,11 +57,11 @@ abstract class PingCommand extends Command {
       if(!reason) return message.channel.send("No reason provided!");
 
       const banmessage = new MessageEmbed()
-      .setTitle(":x: | Banned!")
+      .setTitle("New Message!")
       .setDescription(`Dear <@${user.id}>, your Application has been updated!\nMessage from Admin: ${reason}`)
       .setColor("RED")
       .setTimestamp()
-      .setFooter(`Banned from Testing Server`)
+      .setFooter(`Server Application`)
 
       
       user.send(banmessage)
