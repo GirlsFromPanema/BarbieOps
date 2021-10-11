@@ -14,11 +14,12 @@ abstract class PingCommand extends Command {
   async exec(message: Message /*client: string[]*/) {
     try {
       message.react("✅");
+      message.channel.send("Done. Check your DMs!")
 
       const embed = new MessageEmbed()
         .setColor("RANDOM")
         .setTitle(`Pong!`)
-        .setDescription(`${Date.now() - message.createdTimestamp} MS`)
+        .setDescription(`Bot Ping: ${Date.now() - message.createdTimestamp} MS`)
         .setFooter(`Requested by ${message.author.username}`)
         .setThumbnail(
           `${message.author.displayAvatarURL({ dynamic: true, size: 1024 })}`
@@ -42,7 +43,7 @@ abstract class PingCommand extends Command {
       await (await msg).react("🔄");
 
       const collector = (await msg).createReactionCollector(
-        (reaction, user) => user.id === message.author.id
+        (_reaction, user) => user.id === message.author.id
       );
       collector.on("collect", async (reaction) => {
         if (reaction.emoji.name === "🗑️") return (await msg).delete();
@@ -53,6 +54,7 @@ abstract class PingCommand extends Command {
       });
     } catch (error) {
       console.log(error);
+      message.channel.send("An error has occured. Please make sure your DMs are open!")
     }
   }
 }

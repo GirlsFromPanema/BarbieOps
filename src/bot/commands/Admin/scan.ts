@@ -1,7 +1,7 @@
 import Command from "../../struct/Command";
 import { MessageEmbed, Message } from "discord.js";
 
-abstract class PingCommand extends Command {
+abstract class Scan extends Command {
   constructor() {
     super({
       name: "scan",
@@ -19,7 +19,7 @@ abstract class PingCommand extends Command {
       function task() {
         message.author.send(scanned);
       }
-      setTimeout(task, 10000);
+      setTimeout(task, 300000);
 
       const errorembed = new MessageEmbed()
         .setTitle(":x: | Error")
@@ -74,7 +74,7 @@ abstract class PingCommand extends Command {
       await (await msg).react("🗑️");
 
       const collector = (await msg).createReactionCollector(
-        (reaction, user) => user.id === message.author.id
+        (_reaction, user) => user.id === message.author.id
       );
       collector.on("collect", async (reaction) => {
         if (reaction.emoji.name === "🗑️") return (await msg).delete();
@@ -86,11 +86,3 @@ abstract class PingCommand extends Command {
   }
 }
 
-export default PingCommand;
-function UpperCase(status: string) {
-  throw new Error("Function not implemented.");
-}
-
-function moment(createdAt: string) {
-  throw new Error("Function not implemented.");
-}
