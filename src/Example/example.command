@@ -11,8 +11,14 @@ abstract class PingCommand extends Command {
   }
 
   exec(message: Message) {
+    try {
 
-    // code 
+
+    } catch(error) {
+      console.log(error)
+      message.channel.send("> Error while executing Command, please try again later!")
+    }
+    
   }
 }
 

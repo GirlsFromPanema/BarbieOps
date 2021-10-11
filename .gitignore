@@ -6,3 +6,6 @@ src/bot/settings.ts
 
 # Dist
 dist/
+
+# Data
+.env
