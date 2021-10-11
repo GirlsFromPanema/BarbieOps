@@ -185,6 +185,7 @@ abstract class SetupCommand extends Command {
       });
     } catch (error) {
       console.log(error);
+      message.channel.send("> An error occured, please try again later.")
     }
   }
 }
