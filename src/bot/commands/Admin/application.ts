@@ -50,15 +50,15 @@ abstract class PingCommand extends Command {
       const user = /* message.mentions.users.first() || */ message.guild.members.cache.get(args[0])
       if(!user) return message.channel.send("Please use the ID of the User you would like to message")
 
-      // React 👻 when it worked
-      message.react("👻")
+      // Delete input when it worked
+      message.delete()
 
-      const reason = args.slice(1).join("")
+      const reason = args.slice(1).join(" ")
       if(!reason) return message.channel.send("No reason provided!");
 
       const banmessage = new MessageEmbed()
       .setTitle("New Message!")
-      .setDescription(`Dear <@${user.id}>, your Profile has been updated!\nIndividual message: ${reason}`)
+      .setDescription(`Dear <@${user.id}>, your Profile has been updated!\nUpdated: ${reason}`)
       .setColor("RED")
       .setTimestamp()
       .setFooter(`TH2 Community`)
