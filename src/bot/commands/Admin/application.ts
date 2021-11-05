@@ -46,27 +46,25 @@ abstract class PingCommand extends Command {
         return message.channel.send(botpermserror);
       }
 
+      // Checking the User
+      const user = /* message.mentions.users.first() || */ message.guild.members.cache.get(args[0])
+      if(!user) return message.channel.send("Please use the ID of the User you would like to message")
+
       // React 👻 when it worked
       message.react("👻")
-
-      // Checking the User
-      const user = message.mentions.users.first() || message.guild.members.cache.get(args[0])
-      if(!user) return message.delete()
 
       const reason = args.slice(1).join("")
       if(!reason) return message.channel.send("No reason provided!");
 
       const banmessage = new MessageEmbed()
       .setTitle("New Message!")
-      .setDescription(`Dear <@${user.id}>, your Application has been updated!\nMessage from Admin: ${reason}`)
+      .setDescription(`Dear <@${user.id}>, your Profile has been updated!\nIndividual message: ${reason}`)
       .setColor("RED")
       .setTimestamp()
-      .setFooter(`Server Application`)
+      .setFooter(`TH2 Community`)
 
       
       user.send(banmessage)
-      message.author.send("<@578678204890349594> : Successfully messages the User!")
-
     } catch (error) {
       console.log(error);
       message.channel.send(
