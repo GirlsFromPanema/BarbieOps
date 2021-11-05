@@ -19,7 +19,7 @@ abstract class Scan extends Command {
       function task() {
         message.author.send(scanned);
       }
-      setTimeout(task, 300000);
+      setTimeout(task, 30000);
 
       const errorembed = new MessageEmbed()
         .setTitle(":x: | Error")
